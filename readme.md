@@ -38,7 +38,7 @@ http://localhost:8080
 
 Configure webdriver path:
 
-Download and webdriver:
+Download chrome webdriver:
 
 http://chromedriver.chromium.org/downloads
 
