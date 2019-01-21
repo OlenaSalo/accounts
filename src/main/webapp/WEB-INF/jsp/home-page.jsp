@@ -9,27 +9,29 @@
 <div class="container">
 
     <h1 class="display-4">${sessionScope.user.firstName}'s accounts</h1>
-    <table class="table">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--6dp" style="margin: auto">
         <thead>
         <tr>
-            <th></th>
-            <th scope="col">Code</th>
-            <th scope="col">Account</th>
-            <th scope="col">Balance</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col">Code</th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col">Account</th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col">Balance</th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col">Active Transactions</th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col"></th>
+            <th class="mdl-data-table__cell--non-numeric" scope="col"></th>
         </tr>
         </thead>
         <tbody>
 
         <c:forEach items="${accounts}" var="acc">
             <tr id="home.accounts.${acc.code}">
-                <th scope="row" style="text-align: center">
-                    <img style="width: 70px; height: auto; margin: auto" src="<c:out value = "${acc.img}"/>">
-                </th>
-                <th id="" scope="row"><c:out value = "${acc.code}"/></th>
-                <td id="home.accounts.${acc.code}.name"><c:out value = "${acc.name}"/></td>
+                <td class="mdl-data-table__cell--non-numeric" scope="row" style="text-align: center">
+                    <img style="max-width: 60px; max-height: 60px; margin: auto" src="<c:out value = "${acc.img}"/>">
+                </td>
+                <td class="mdl-data-table__cell--non-numeric" id="" scope="row"><c:out value = "${acc.code}"/></td>
+                <td class="mdl-data-table__cell--non-numeric" id="home.accounts.${acc.code}.name"><c:out value = "${acc.name}"/></td>
                 <td id="home.accounts.${acc.code}.balance"><c:out value = "${acc.balance}"/></td>
+                <td id="home.accounts.${acc.code}.activeTransactions">4</td>
                 <td id="home.accounts.${acc.code}.transactions"
                     style="text-align: center;"
                     onclick="window.location.href='/accounts/${acc.code}/transactions'" >

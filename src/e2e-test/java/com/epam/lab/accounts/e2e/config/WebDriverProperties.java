@@ -15,4 +15,12 @@ public class WebDriverProperties {
         return webDriverPath;
     }
 
+    public String getWebDriverPathForCurrentOS() {
+        final String os = System.getProperty("os.name");
+        if (os.toLowerCase().contains("mac")) {
+            return webDriverPath;
+        } else {
+            return webDriverPath + ".exe";
+        }
+    }
 }

@@ -1,6 +1,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+    .demo-card-wide.mdl-card {
+        width: 50%;
+        margin:auto;
+        margin-top: 50px;
+        padding: 30px;
+    }
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+    .login-icon {
+        width: auto;
+        height: 100px;
+        margin: auto;
+    }
+</style>
 <body>
 
 
@@ -8,26 +23,19 @@
 
 <div class="container">
 
-    <div class="card" style="width: 30rem; padding: 20px; margin: 100px auto auto;">
-
+    <div class="demo-card-wide mdl-card mdl-shadow--6dp">
+        <img class="login-icon" src="https://www.freeiconspng.com/uploads/panda-icon-25.png">
        <jsp:include page="validation-error.jsp"/>
-
         <form action="/auth/register" method="post">
             <div class="form-group">
                 <label for="register.firstName">First Name</label>
                 <input type="firstName" class="form-control" id="register.firstName" name="firstName"
                        aria-describedby="firstNameHelp" placeholder="Enter firstName" required>
-                <small id="firstNameHelp" class="form-text text-muted">We'll never share your first name with anyone
-                    else.
-                </small>
             </div>
             <div class="form-group">
                 <label for="register.lastName">Last Name</label>
                 <input type="lastName" class="form-control" id="register.lastName" name="lastName"
                        aria-describedby="lastNameHelp" placeholder="Enter lastName" required>
-                <small id="lastNameHelp" class="form-text text-muted">We'll never share your last name with anyone
-                    else.
-                </small>
             </div>
             <div class="form-group">
                 <label for="register.email">Email address</label>
@@ -47,8 +55,10 @@
             </div>
             <button type="submit"
                     id="register.submit"
-                    class="btn btn-outline-secondary"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect"
                     style="width: 100%">REGISTER</button>
+
+            <a href="/login" style="margin-top: 10px;">Login</a>
         </form>
     </div>
 </div>

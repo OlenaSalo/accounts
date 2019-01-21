@@ -24,7 +24,8 @@ public class SpringConfigHook {
 
     @Before
     public void setWebDriverPath() {
-        System.setProperty("webdriver.chrome.driver", webDriverProperties.getWebDriverPath());
+
+        System.setProperty("webdriver.chrome.driver", webDriverProperties.getWebDriverPathForCurrentOS());
     }
 
     @After
