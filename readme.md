@@ -4,11 +4,13 @@ Server side rendering spring-boot app with unit, integration and e2e tests
 
 # Initialize local environment
 
-Install JDK 8
-Optionally install gradle
-Install MySQL database (preferable version is MySQL 5.7)
+**1. Install JDK 8**
 
-Create database named 'accounts'
+**2. install gradle**
+
+**3. Install MySQL 5.7 Server**
+
+**4. Create database named 'accounts'** 
 
 Edit local configuration:
 ```
