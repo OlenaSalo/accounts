@@ -5,11 +5,14 @@ Server side rendering spring-boot app with unit, integration and e2e tests
 # Initialize local environment
 
 **1. Install JDK 8**
+
 **2. install gradle**
+
 **3. Install MySQL 5.7 Server**
+
 **3.1. Create database named 'accounts'** 
 
-Edit local configuration:
+Edit local application configuration (we need to tell our application what user name and password can be used for database access):
 ```
 /accounts/src/main/resources/application.properties
 ```
