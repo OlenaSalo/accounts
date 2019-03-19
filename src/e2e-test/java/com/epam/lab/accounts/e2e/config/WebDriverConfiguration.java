@@ -16,12 +16,18 @@ public class WebDriverConfiguration {
 
     public static final long DEFAULT_DRIVER_TIMEOUT = 10;
 
+    private final ThreadLocal<PageDriver> pageDriverThreadLocal = ThreadLocal.withInitial(new Supplier<PageDriver>() {
+        @Override
+        public PageDriver get() {
+            final PageDriver pageDriver = new PageDriver();
+            pageDriver.set(new ChromeDriverSupplier());
+            return pageDriver;
+        }
+    });
 
     @Bean
     public PageDriver webDriver() {
-        final PageDriver pageDriver = new PageDriver();
-        pageDriver.set(new ChromeDriverSupplier());
-        return pageDriver;
+        return pageDriverThreadLocal.get();
     }
 
     public class ChromeDriverSupplier implements Supplier<WebDriver> {

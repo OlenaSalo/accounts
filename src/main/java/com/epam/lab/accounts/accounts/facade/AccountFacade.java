@@ -76,6 +76,7 @@ public class AccountFacade {
         accountDTO.setCode(createUpdateAccountRequest.getAccountCode());
         accountDTO.setName(createUpdateAccountRequest.getAccountName());
         accountDTO.setImg(createUpdateAccountRequest.getAccountImage());
+        accountDTO.setBalance(createUpdateAccountRequest.getAccountBalance());
         return accountDTO;
     }
 

@@ -78,6 +78,16 @@
                        placeholder="Enter account name" required>
             </div>
 
+                    <div class="form-group">
+                        <label for="account.edit.name">Account Balance</label>
+                        <input type="text" class="form-control"
+                               id="account.edit.balance"
+                               name="accountBalance"
+                               value="${acc.balance}"
+                               aria-describedby="accountBalanceHelp"
+                               placeholder="Enter account balance" required>
+                    </div>
+
             <div class="form-group">
                 <label for="imgUrl">Image url</label>
                 <input type="text"

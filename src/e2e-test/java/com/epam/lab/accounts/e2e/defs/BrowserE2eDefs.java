@@ -8,7 +8,7 @@ import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class BrowserDefs {
+public class BrowserE2eDefs {
 
     @Autowired
     private PageDriver pageDriver;

@@ -78,12 +78,14 @@ sourceSets {
 }
 
 task integrationTest(type: Test) {
+    maxParallelForks = 2
     dependsOn('test')
     testClassesDirs = sourceSets.integrationTest.output.classesDirs
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
 task e2e(type: Test) {
+    maxParallelForks = 5
     systemProperties System.properties
     dependsOn('integrationTest')
     testClassesDirs = sourceSets.e2eTest.output.classesDirs

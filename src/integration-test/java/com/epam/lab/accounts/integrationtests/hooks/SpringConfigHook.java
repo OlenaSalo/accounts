@@ -20,5 +20,4 @@ public class SpringConfigHook {
         // adjust session service to user mocked session instead real one
         ReflectionTestUtils.setField(sessionService, "session", new MockHttpSession());
     }
-
 }

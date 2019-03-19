@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static java.util.Optional.ofNullable;
+
 public class PageDriver {
 
     private Supplier<WebDriver> webDriverSupplier;
@@ -31,8 +33,8 @@ public class PageDriver {
 
     public void close() {
         try {
-            get().close();
-        }finally {
+            ofNullable(webDriver).ifPresent(WebDriver::close);
+        } finally {
             webDriver = null;
         }
     }
@@ -56,13 +58,14 @@ public class PageDriver {
     }
 
     public boolean isElementExists(By by) {
-        try
-        {
+        try {
             return get().findElement(by).isDisplayed();
-        }
-        catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void refresh() {
+        get().manage().deleteAllCookies();
     }
 }

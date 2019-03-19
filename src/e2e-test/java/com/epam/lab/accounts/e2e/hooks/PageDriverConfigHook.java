@@ -9,17 +9,16 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 @SpringBootTest(
         classes = {AccountsApplication.class, WebDriverConfiguration.class},
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class SpringConfigHook {
-
-    @Autowired
-    private PageDriver pageDriver;
+public class PageDriverConfigHook {
 
     @Autowired
     private WebDriverProperties webDriverProperties;
+
+    @Autowired
+    private PageDriver pageDriver;
 
 
     @Before
@@ -30,7 +29,8 @@ public class SpringConfigHook {
 
     @After
     public void closeDriverAfterTest() {
-        pageDriver.close();
+
+        pageDriver.refresh();
     }
 
 }

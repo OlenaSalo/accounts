@@ -11,7 +11,7 @@ public class AccountDTO extends DataClass {
     private String code;
     private String name;
     private String img;
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.ZERO;
 
     public String getCode() {
         return code;

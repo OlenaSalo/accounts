@@ -12,11 +12,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matchers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -30,7 +32,7 @@ public class AccountDefs {
     @When("^send create-update account request with attributes:$")
     public void sendCreateAccountRequest(final DataTable dataTable) {
         final CreateUpdateAccountRequest request = CucumberUtils.toObject(dataTable, CreateUpdateAccountRequest.class);
-        accountsPageController.onCreateAccountRequest(request);
+        accountsPageController.onEditAccountRequest(request);
     }
 
     @Then("^account model exists in database with attributes:$")
@@ -38,8 +40,9 @@ public class AccountDefs {
         final AccountModel expectedAccountModel = CucumberUtils.toObject(dataTable, AccountModel.class);
         final AccountModel actualAccountModel = accountService.getAccountModelForAccountCode(expectedAccountModel.getCode());
 
-        assertEquals(actualAccountModel.getName(), expectedAccountModel.getName());
-        assertEquals(actualAccountModel.getUrlToImage(), expectedAccountModel.getUrlToImage());
+        assertThat(actualAccountModel.getName(), equalTo(expectedAccountModel.getName()));
+        assertThat(actualAccountModel.getUrlToImage(), equalTo(expectedAccountModel.getUrlToImage()));
+        assertThat(actualAccountModel.getBalance(), Matchers.comparesEqualTo(expectedAccountModel.getBalance()));
     }
 
     @And("user (.+) has (.+) account assigned")

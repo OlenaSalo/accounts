@@ -43,7 +43,7 @@ public class AccountsPageController {
     }
 
     @RequestMapping("/accounts/edit")
-    public String onCreateAccountRequest(@Valid final CreateUpdateAccountRequest createUpdateAccountRequest)
+    public String onEditAccountRequest(@Valid final CreateUpdateAccountRequest createUpdateAccountRequest)
     {
         accountAccessValidator.validate(createUpdateAccountRequest.getAccountCode());
 

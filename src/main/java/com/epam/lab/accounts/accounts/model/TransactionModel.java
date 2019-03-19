@@ -4,22 +4,36 @@ import com.epam.lab.accounts.accounts.dto.DataClass;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 public class TransactionModel extends DataClass {
 
+    public static final String CREATED = "created";
+    public static final String COMMITTED = "committed";
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(targetEntity = AccountModel.class)
+    @ManyToOne(targetEntity = AccountModel.class)
     private AccountModel fromAccount;
-    @OneToOne(targetEntity = AccountModel.class)
+    @ManyToOne(targetEntity = AccountModel.class)
     private AccountModel toAccount;
-    private BigDecimal value;
+    private BigDecimal transactionValue;
     private BigDecimal fromCurrentBalance;
     private BigDecimal toCurrentBalance;
     private BigDecimal fromTargetBalance;
     private BigDecimal toTargetBalance;
+    private String transactionCode;
+    @Enumerated(EnumType.STRING)
+    private AppTransactionStatus appTransactionStatus;
+    @Basic(optional = false)
+    @Column(name = CREATED, insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
+    @Basic(optional = false)
+    @Column(name = COMMITTED, insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date committed;
 
     public Long getId() {
         return id;
@@ -45,12 +59,12 @@ public class TransactionModel extends DataClass {
         this.toAccount = toAccount;
     }
 
-    public BigDecimal getValue() {
-        return value;
+    public BigDecimal getTransactionValue() {
+        return transactionValue;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public void setTransactionValue(BigDecimal transactionValue) {
+        this.transactionValue = transactionValue;
     }
 
     public BigDecimal getFromCurrentBalance() {
@@ -83,5 +97,37 @@ public class TransactionModel extends DataClass {
 
     public void setToTargetBalance(BigDecimal toTargetBalance) {
         this.toTargetBalance = toTargetBalance;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
+    }
+
+    public void setTransactionCode(String transactionCode) {
+        this.transactionCode = transactionCode;
+    }
+
+    public AppTransactionStatus getAppTransactionStatus() {
+        return appTransactionStatus;
+    }
+
+    public void setAppTransactionStatus(AppTransactionStatus appTransactionStatus) {
+        this.appTransactionStatus = appTransactionStatus;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getCommitted() {
+        return committed;
+    }
+
+    public void setCommitted(Date committed) {
+        this.committed = committed;
     }
 }

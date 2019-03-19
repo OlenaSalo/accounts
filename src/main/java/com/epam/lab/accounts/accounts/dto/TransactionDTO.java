@@ -4,15 +4,26 @@ import java.math.BigDecimal;
 
 public class TransactionDTO extends DataClass {
 
+    private String transactionCode;
     private String fromAccountCode;
     private String toAccountCode;
     private String fromAccountName;
     private String toAccountName;
+    private String transactionStatus;
+    private String createdDate;
     private BigDecimal value;
     private BigDecimal fromCurrentBalance;
     private BigDecimal toCurrentBalance;
     private BigDecimal fromTargetBalance;
     private BigDecimal toTargetBalance;
+
+    public String getTransactionCode() {
+        return transactionCode;
+    }
+
+    public void setTransactionCode(String transactionCode) {
+        this.transactionCode = transactionCode;
+    }
 
     public String getFromAccountCode() {
         return fromAccountCode;
@@ -84,5 +95,21 @@ public class TransactionDTO extends DataClass {
 
     public void setToTargetBalance(BigDecimal toTargetBalance) {
         this.toTargetBalance = toTargetBalance;
+    }
+
+    public String getTransactionStatus() {
+        return transactionStatus;
+    }
+
+    public void setTransactionStatus(String transactionStatus) {
+        this.transactionStatus = transactionStatus;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }
